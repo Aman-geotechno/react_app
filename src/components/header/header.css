@@ -1,0 +1,46 @@
+.header{
+    width:99%;
+    min-width: fit-content;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 0.2rem;  
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.4rem; 
+    border: 0.02rem solid rgb(221, 213, 213);
+}
+
+.brand-logo{
+    width:7em;
+    height:7rem;
+    max-width: 7rem;
+    max-height: 7rem;
+    object-fit: contain;
+    margin-left: 1rem;
+    background-color: transparent;
+}
+.brand-text{
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: bold;
+    justify-self: center;
+    color: orange;
+}
+
+.gov-img-container{
+    display: flex;
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+.gov-img{
+    width: 4rem;
+    height: 4rem;
+    max-width: 4rem;
+    max-height: 4rem;
+    object-fit: contain;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
