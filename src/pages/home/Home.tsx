@@ -14,7 +14,6 @@ return(
     <div className="home-page">
         <Header />
         <ImgBtn id='chatbotButton' imgSrc={askDidiLogo} handleImgBtnClick={handleAskDidiBtn}/>
-        
     </div>
 )
 }

@@ -3,19 +3,18 @@
  border-radius: 50%;
  min-width: fit-content;
  max-width: 8rem;
- background-color: orange;
  position: fixed;
- bottom: 2%;
- right: 2%;
+ bottom: 4%;
+ right: 4%;
  display: flex;
  justify-content: center;
  align-items: center;
- padding: 0.25rem;
+ padding: 0.8rem;
 }
 
 .btnImg{
- width:5rem;
- height: 5rem;
+ width:4rem;
+ height: 4rem;
  margin: auto;
  object-fit: contain;
 }

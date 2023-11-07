@@ -21,6 +21,6 @@ code {
 :root{
   --text-color:black;
   --primary-color:green;
-  --secondary-color:red;
+  --secondary-color:#ff8c42;
   --border-color:rgb(221, 213, 213);
 }
