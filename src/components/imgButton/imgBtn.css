@@ -1,0 +1,21 @@
+.imgBtnContainer{
+ border: 1px solid var(--border-color);
+ border-radius: 50%;
+ min-width: fit-content;
+ max-width: 8rem;
+ background-color: orange;
+ position: fixed;
+ bottom: 2%;
+ right: 2%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding: 0.25rem;
+}
+
+.btnImg{
+ width:5rem;
+ height: 5rem;
+ margin: auto;
+ object-fit: contain;
+}
