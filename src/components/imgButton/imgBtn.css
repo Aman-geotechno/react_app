@@ -3,9 +3,6 @@
  border-radius: 50%;
  min-width: fit-content;
  max-width: 8rem;
- position: fixed;
- bottom: 4%;
- right: 4%;
  display: flex;
  justify-content: center;
  align-items: center;

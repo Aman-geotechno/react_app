@@ -2,3 +2,9 @@
  display: flex;
  flex-direction: column;
 }
+
+#chatbotButton{
+  position: fixed;
+  bottom:4%;
+  right:4%;
+}
