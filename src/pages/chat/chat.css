@@ -1,5 +1,18 @@
-.chat-conversation{
-    display: flex;
-    flex-direction: column;
-    
+.chat-conversation {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 18%;
+  border: 0.02rem solid var(--border-color);
+  border-radius: 0.4rem;
+  width: 90%;
+  height: 65%;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: white;
+  z-index: 1;
+}
+
+#searchbar {
+  margin-bottom: 5%;
 }

@@ -24,8 +24,9 @@
     margin-left: auto;
 }
 
-#send-button{
+#send-btn{
     margin-left: 1%;
+    cursor: pointer;
 }
 
 #mic-btn{

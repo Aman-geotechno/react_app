@@ -1,10 +1,11 @@
-.home-page{
- display: flex;
- flex-direction: column;
+.home-page {
+  display: flex;
+  flex-direction: column;
 }
 
-#chatbotButton{
+#chatbotButton {
   position: fixed;
-  bottom:4%;
-  right:4%;
+  bottom: 4%;
+  right: 4%;
+  z-index: 2;
 }
