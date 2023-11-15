@@ -1,15 +1,21 @@
+import { useDispatch } from "react-redux";
 import { micIcon, sendIcon } from "../../assets/icons";
 import "./searchBar.css";
+import {setQueryInput} from '../../features/queryAnsSlice'
+import { fetchAnswerMiddleware } from "../../middlewares/fetchAnswerMiddleware";
 
-function SearchBar(props: any) {
+function SearchBar(props) {
   const { id, inputValue, setInputValue, setQuery } = props;
 
-  const handleInput = (e: any) => {
+  const dispatch=useDispatch();
+
+  const handleInput = (e) => {
     setInputValue(e.target.value);
   };
 
   const handleQuery = () => {
-    setQuery(inputValue);
+    dispatch(setQueryInput(inputValue));
+    dispatch(fetchAnswerMiddleware(inputValue));
   };
 
   return (

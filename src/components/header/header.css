@@ -1,8 +1,8 @@
 .header{
-    position: fixed;
+    /* position: fixed;
     top:0;
     left:0;
-    right:0;
+    right:0; */
     width:99%;
     min-width: fit-content;
     background-color: white;
