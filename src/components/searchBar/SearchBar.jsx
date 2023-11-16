@@ -5,7 +5,7 @@ import {setQueryInput} from '../../features/queryAnsSlice'
 import { fetchAnswerMiddleware } from "../../middlewares/fetchAnswerMiddleware";
 
 function SearchBar(props) {
-  const { id, inputValue, setInputValue, setQuery } = props;
+  const { id, inputValue, setInputValue} = props;
 
   const dispatch=useDispatch();
 
