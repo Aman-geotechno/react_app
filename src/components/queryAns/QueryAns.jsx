@@ -25,7 +25,7 @@ function QueryAns(props) {
               <div className="ans conversation-tab">
                 <img className="conversation-profile"src={askDidiLogo} alt={askDidiLogo}/>
                 {answer[index] ? (
-                  <p>{answer[0][index].title}</p>
+                  <p>{answer[0][index].description}</p>
                 ) : (
                   "Analyzing your query and fetching answer..."
                 )}
