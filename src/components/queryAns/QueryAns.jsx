@@ -4,28 +4,35 @@ import { askDidiLogo } from "../../assets/images";
 import "./queryAns.css";
 
 function QueryAns(props) {
-  const query = useAppSelector((state) => state.queryAns.query);
-  const answer= useAppSelector((state) => state.queryAns.ans);
-
-  console.log("query", query);
-  console.log("ans", answer);
+  //Get query and ans from store
+  const query = useAppSelector((state) => state.queryAnsReducer.query);
+  const answer = useAppSelector((state) => state.queryAnsReducer.ans);
 
   return (
     <div id={props.id}>
+      {/* Fetch and display query and answer in conversation window */}
       {query.map((question, index) => {
         return (
           <div className="queryAns-container">
             <div className="query conversation-tab" key={index}>
-            <img className="conversation-profile"src={userIcon} alt={userIcon}/>
-              <p >{question}</p>
+              <img
+                className="conversation-profile"
+                src={userIcon}
+                alt={userIcon}
+              />
+              <p className="conversation-txt">{question}</p>
               <img className="speaker" src={speakerIcon} alt={speakerIcon} />
             </div>
 
             {query[index] && (
               <div className="ans conversation-tab">
-                <img className="conversation-profile"src={askDidiLogo} alt={askDidiLogo}/>
+                <img
+                  className="conversation-profile"
+                  src={askDidiLogo}
+                  alt={askDidiLogo}
+                />
                 {answer[index] ? (
-                  <p>{answer[0][index].description}</p>
+                  <p className="conversation-txt">{answer[0][index].description}</p>
                 ) : (
                   "Analyzing your query and fetching answer..."
                 )}

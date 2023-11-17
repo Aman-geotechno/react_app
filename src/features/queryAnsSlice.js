@@ -1,4 +1,4 @@
-import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
+import {createSlice } from "@reduxjs/toolkit";
 
 // export interface QueryAnsState{
 //   loading:boolean,
@@ -11,9 +11,6 @@ const initialState={
   error:false,
     query:[],
     ans:[],
-    queryAns:[{que:'',
-  an:''
-}]
 }
 
 const queryAnsSlice=createSlice({
@@ -33,10 +30,10 @@ const queryAnsSlice=createSlice({
         console.log('showError called');
       },
 
-      setQueryInput:(state, action)=>{
+      setQuery:(state, action)=>{
          state.query=[...state.query, action.payload];
          console.log('setQueryInput called');
-         console.log('queryAns',[...state.queryAns]);
+         
       },
 
       setAnswer:(state,action)=>{
@@ -47,5 +44,5 @@ const queryAnsSlice=createSlice({
     }
 })
 
-export const {showLoading,showError,setQueryInput,setAnswer}= queryAnsSlice.actions;
+export const {showLoading,showError,setQuery,setAnswer}= queryAnsSlice.actions;
 export default queryAnsSlice.reducer;

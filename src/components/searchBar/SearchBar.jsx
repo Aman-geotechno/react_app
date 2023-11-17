@@ -1,38 +1,37 @@
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../app/hooks";
 import { micIcon, sendIcon, unclickableSendIcon } from "../../assets/icons";
-import "./searchBar.css";
-import {setQueryInput} from '../../features/queryAnsSlice'
+import { setQuery } from "../../features/queryAnsSlice";
 import { fetchAnswerMiddleware } from "../../middlewares/fetchAnswerMiddleware";
 import { useEffect, useState } from "react";
+import "./searchBar.css";
 
 function SearchBar(props) {
-  const { id, inputValue, setInputValue} = props;
-  const [isSendClickable, setIsSendClickable]=useState(false);
+  const { id, inputValue, setInputValue } = props;
+  const [isSendClickable, setIsSendClickable] = useState(false);
 
-  const dispatch=useDispatch();
+  const dispatch = useAppDispatch();
 
+  //handle user input
   const handleInput = (e) => {
     setInputValue(e.target.value);
-    // if(e.target.value!=='')
-    // setIsSendClickable(true);
   };
 
-  useEffect(()=>setIsSendClickable(inputValue!==''),
-  [inputValue])
+  //set send button clickable or not
+  useEffect(() => setIsSendClickable(inputValue !== ""), [inputValue]);
 
-
+  //handle send button click
   const handleQuery = () => {
-    dispatch(setQueryInput(inputValue));
+    dispatch(setQuery(inputValue));
     dispatch(fetchAnswerMiddleware(inputValue));
-    setInputValue('');
+    setInputValue("");
   };
 
- //handle Enter press
-  const handleEnter=(e)=>{
-    if(e.key==='Enter' && isSendClickable){
+  //handle Enter press
+  const handleEnter = (e) => {
+    if (e.key === "Enter" && isSendClickable) {
       handleQuery();
     }
-  }
+  };
 
   return (
     <div id={id} className="searchBar-container">
@@ -46,22 +45,23 @@ function SearchBar(props) {
       ></input>
 
       <div className="searchbar-icon-container">
-        { isSendClickable ?
-        <img
-          className="searchbar-icon"
-          id="send-btn"
-          src={sendIcon}
-          alt="send"
-          onClick={handleQuery}
-        />
-        :
-        <img className="searchbar-icon"
-        id="unclickable-send-btn"
-        src={unclickableSendIcon}
-        alt="send"/>
-        }
+        {isSendClickable ? (
+          <img
+            className="searchbar-icon"
+            id="send-btn"
+            src={sendIcon}
+            alt="send"
+            onClick={handleQuery}
+          />
+        ) : (
+          <img
+            className="searchbar-icon"
+            id="unclickable-send-btn"
+            src={unclickableSendIcon}
+            alt="send"
+          />
+        )}
 
-      
         <img className="searchbar-icon" id="mic-btn" src={micIcon} alt="mic" />
       </div>
     </div>

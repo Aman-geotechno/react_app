@@ -4,7 +4,7 @@ import thunkMiddleware from 'redux-thunk'
 
 export const store=configureStore({
     reducer:{
-        queryAns:queryAnsSlice
+        queryAnsReducer:queryAnsSlice,
     },
     middleware:[thunkMiddleware]
 })
