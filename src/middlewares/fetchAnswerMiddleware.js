@@ -1,7 +1,7 @@
 import { showLoading, showError, setAnswer } from "../features/queryAnsSlice";
-import { AppDispatch, RootState } from "../app/store";
-import { AnyAction } from "@reduxjs/toolkit";
-import { ThunkAction } from "@reduxjs/toolkit";
+// import { AppDispatch, RootState } from "../app/store";
+// import { AnyAction } from "@reduxjs/toolkit";
+// import { ThunkAction } from "@reduxjs/toolkit";
 
 const answerEndpoint = "https://dummyjson.com/products";
 

@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import queryAnsSlice from '../features/queryAnsSlice'
-import thunkMiddleware from 'redux-thunk'
+//import thunkMiddleware from 'redux-thunk'
 
 export const store=configureStore({
     reducer:{
         queryAnsReducer:queryAnsSlice,
     },
-    middleware:[thunkMiddleware]
+    //middleware:[thunkMiddleware]
 })
 
 export type RootState= ReturnType<typeof store.getState>;
