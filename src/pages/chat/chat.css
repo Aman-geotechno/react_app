@@ -34,7 +34,7 @@
 #queryAns-main-container{
   display: flex;
   flex-direction: column;
-  background-color:rgb(251, 248, 243);
+  background-color:rgb(231, 250, 231);
   width: 98%;
   height: 100%;
   overflow-y: auto;

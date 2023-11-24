@@ -1,6 +1,6 @@
 import { useAppSelector } from "../../app/hooks";
-import { speakerIcon, userIcon } from "../../assets/icons";
-import { askDidiLogo } from "../../assets/images";
+import { botIcon, speakerIcon, userIcon } from "../../assets/icons";
+import { askDidiLogo} from "../../assets/images";
 import "./queryAns.css";
 
 function QueryAns(props) {
@@ -13,30 +13,35 @@ function QueryAns(props) {
       {/* Fetch and display query and answer in conversation window */}
       {query.map((question, index) => {
         return (
-          <div className="queryAns-container">
-            <div className="query conversation-tab" key={index}>
+          <div className="queryAns-container">        
+            <div className="query" key={index}>
+              <div className="query-conversation-txt-container">
+                <img className="speaker" src={speakerIcon} alt={speakerIcon} />
+                <p className="conversation-txt">{question}</p>
+              </div>
               <img
-                className="conversation-profile"
+                className="user-icon conversation-profile"
                 src={userIcon}
                 alt={userIcon}
               />
-              <p className="conversation-txt">{question}</p>
-              <img className="speaker" src={speakerIcon} alt={speakerIcon} />
             </div>
 
             {query[index] && (
-              <div className="ans conversation-tab">
+              <div className="ans">
                 <img
-                  className="conversation-profile"
-                  src={askDidiLogo}
+                  className="bot-icon conversation-profile"
+                  src={botIcon}
                   alt={askDidiLogo}
                 />
+                <div className="ans-conversation-txt-container">
+                <img className="speaker" src={speakerIcon} alt={speakerIcon} />
                 {answer[index] ? (
                   <p className="conversation-txt">{answer[index]}</p>
                 ) : (
-                  "Analyzing your query and fetching answer..."
+                  <p className="conversation-txt"> Analyzing your query and fetching answer...</p>
                 )}
-                <img className="speaker" src={speakerIcon} alt={speakerIcon} />
+               
+                </div>
               </div>
             )}
           </div>
