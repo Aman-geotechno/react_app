@@ -32,7 +32,7 @@ function QueryAns(props) {
                   alt={askDidiLogo}
                 />
                 {answer[index] ? (
-                  <p className="conversation-txt">{answer[0][index].description}</p>
+                  <p className="conversation-txt">{answer[index]}</p>
                 ) : (
                   "Analyzing your query and fetching answer..."
                 )}

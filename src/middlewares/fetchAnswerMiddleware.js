@@ -3,32 +3,30 @@ import { showLoading, showError, setAnswer } from "../features/queryAnsSlice";
 // import { AnyAction } from "@reduxjs/toolkit";
 // import { ThunkAction } from "@reduxjs/toolkit";
 
-const answerEndpoint = "https://dummyjson.com/products";
+const answerEndpoint = "http://192.168.29.191:5001/chatbot";
 
 export const fetchAnswerMiddleware = (query) => {
   console.log("fetchmiddleware called");
   return async(dispatch) => {   
     try {
       dispatch(showLoading());
-      const resp = await fetch(answerEndpoint);
+      const resp = await fetch(answerEndpoint,{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+         body:JSON.stringify({"question":query})
+      });
       console.log("resp is",resp);
-      //   method:"POST",
-      //   mode:'cors',
-      //   headers:{
-      //       "Content-Type":"application/json"
-      //   },
-      //   // body:JSON.stringify({query})
-      // });
-      
+      if(resp.status===200){
       const data = await resp.json();
       console.log("data is:",data);
-      dispatch(setAnswer(data.products));
+      dispatch(setAnswer(data.response));
+      }
     } catch (err) {
       dispatch(showError());
-    }
-  
-  };
-  
+    }  
+  };  
 };
 
 

@@ -6,6 +6,7 @@ import "./home.css";
 function Home(props: any) {
   const {setIsChatbotButtonClicked } = props;
   const navigate=useNavigate();
+  
   function handleAskDidiBtn() {
     setIsChatbotButtonClicked(true);
     navigate('/chat');

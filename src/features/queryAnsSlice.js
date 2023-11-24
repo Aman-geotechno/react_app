@@ -39,7 +39,7 @@ const queryAnsSlice=createSlice({
       setAnswer:(state,action)=>{
         state.loading=false;
         state.ans=[...state.ans, action.payload];
-        console.log('setAnswer called');
+        console.log('setAnswer called',state.ans);
       }
     }
 })
