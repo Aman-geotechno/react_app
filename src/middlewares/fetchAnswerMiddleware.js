@@ -23,7 +23,13 @@ export const fetchAnswerMiddleware = (query) => {
       console.log("data is:",data);
       dispatch(setAnswer(data.response));
       }
+
+      setTimeout(()=>{if(!resp)
+      throw new Error('Error Timed out');
+    },100)
+
     } catch (err) {
+      dispatch(setAnswer(`${err.message}`));
       dispatch(showError());
     }  
   };  
