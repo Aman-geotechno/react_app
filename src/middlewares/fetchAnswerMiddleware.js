@@ -10,6 +10,9 @@ export const fetchAnswerMiddleware = (query) => {
   return async(dispatch) => {   
     try {
       dispatch(showLoading());
+      // const controller= new AbortController();
+      // const timeOutId=setTimeout(()=>controller.abort(),100);
+      
       const resp = await fetch(answerEndpoint,{
         method:"POST",
         headers:{
@@ -17,18 +20,28 @@ export const fetchAnswerMiddleware = (query) => {
         },
          body:JSON.stringify({"question":query})
       });
+
       console.log("resp is",resp);
+
+      //clearTimeout(timeOutId);
+
       if(resp.status===200){
       const data = await resp.json();
       console.log("data is:",data);
       dispatch(setAnswer(data.response));
       }
+      else{
+        throw new Error('err Timeout');
+      }
+     
+      // setTimeout(()=>
+      // {
+      //   if(!resp)
+      //      throw new Error('Error Timed out');
+      // },1000)
 
-      setTimeout(()=>{if(!resp)
-      throw new Error('Error Timed out');
-    },100)
-
-    } catch (err) {
+    } 
+    catch (err) {
       dispatch(setAnswer(`${err.message}`));
       dispatch(showError());
     }  

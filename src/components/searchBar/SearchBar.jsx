@@ -4,10 +4,12 @@ import { setQuery } from "../../features/queryAnsSlice";
 import { fetchAnswerMiddleware } from "../../middlewares/fetchAnswerMiddleware";
 import { useEffect, useState } from "react";
 import "./searchBar.css";
+import handleSpeechRecognition from "../../utils/handleSpeechRecognition";
 
 function SearchBar(props) {
   const { id, inputValue, setInputValue } = props;
   const [isSendClickable, setIsSendClickable] = useState(false);
+  const [isListening,setIsListening]=useState(false);
 
   const dispatch = useAppDispatch();
 
@@ -17,7 +19,11 @@ function SearchBar(props) {
   };
 
   //set send button clickable or not
-  useEffect(() => setIsSendClickable(inputValue !== ""), [inputValue]);
+  useEffect(
+    () =>
+      setIsSendClickable(inputValue !== "" && inputValue !== "Listening..."),
+    [inputValue]
+  );
 
   //handle send button click
   const handleQuery = () => {
@@ -33,13 +39,43 @@ function SearchBar(props) {
     }
   };
 
+  //handle mic button click
+  const handleMicClick = () => {
+    setInputValue("Listening...");
+    setIsListening(true);
+    setIsSendClickable(false); //Need to handle input value after mic click and after stop listening
+    
+    const speechPromise = handleSpeechRecognition();
+    
+    console.log("speechpromise reult is:", speechPromise);
+    
+    speechPromise.then((word) => {
+      setIsListening(false);
+      if (word.length > 0) {
+        console.log("word is:", word);
+        setInputValue(word);
+        setIsSendClickable(true);
+      }
+      else{
+        setIsListening(false);
+        setInputValue('');
+      }
+    },(err) => {
+      setIsListening(false);
+      setInputValue("");
+      console.log(err);
+    });
+  };  
+
+  //  useEffect(()=>setInputValue(sentence),[sentence]);
+
   return (
     <div id={id} className="searchBar-container">
       <input
         className="txt-input"
         type="text"
         value={inputValue}
-        placeholder="Search data of Mashik Prativedan"
+        placeholder="Search data of Masik Prativedan"
         onChange={handleInput}
         onKeyDown={handleEnter}
       ></input>
@@ -61,8 +97,14 @@ function SearchBar(props) {
             alt="send"
           />
         )}
-
-        <img className="searchbar-icon" id="mic-btn" src={micIcon} alt="mic" />
+       
+        <img 
+          className={`searchbar-icon${isListening?'listening':''} `}
+          id='mic-btn'
+          src={micIcon}
+          alt="mic"
+          onClick={handleMicClick}
+        />
       </div>
     </div>
   );
