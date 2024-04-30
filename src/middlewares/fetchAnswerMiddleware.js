@@ -3,7 +3,11 @@ import { showLoading, showError, setAnswer } from "../features/queryAnsSlice";
 // import { AnyAction } from "@reduxjs/toolkit";
 // import { ThunkAction } from "@reduxjs/toolkit";
 
-const answerEndpoint = "http://192.168.29.191:5001/chatbot";
+// const answerEndpoint = "http://192.168.29.191:5001/chatbot";
+
+const answerEndpoint = "https://aman-geotechno.github.io/response";
+
+// const answerEndpoint = "http://localhost:5051//response";
 
 export const fetchAnswerMiddleware = (query) => {
   console.log("fetchmiddleware called");
@@ -15,8 +19,10 @@ export const fetchAnswerMiddleware = (query) => {
       
       const resp = await fetch(answerEndpoint,{
         method:"POST",
+        
         headers:{
-            "Content-Type":"application/json"
+            "Content-Type":"application/json",
+            
         },
          body:JSON.stringify({"question":query})
       });
@@ -31,7 +37,7 @@ export const fetchAnswerMiddleware = (query) => {
       dispatch(setAnswer(data.response));
       }
       else{
-        throw new Error('err Timeout');
+        throw new Error('Need to modify your question a bit');
       }
      
       // setTimeout(()=>

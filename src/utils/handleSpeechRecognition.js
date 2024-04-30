@@ -46,3 +46,5 @@ function handleSpeechRecognition() {
 }
 
 export default handleSpeechRecognition;
+
+

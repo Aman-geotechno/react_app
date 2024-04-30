@@ -11,3 +11,8 @@ function handleSpeechSynthesis(text){
 }
 
 export default handleSpeechSynthesis;
+
+
+
+  
+
